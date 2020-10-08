@@ -2,6 +2,8 @@ import { Game } from './game.js';
 
 let game = undefined;
 
+const clickTargets = document.getElementById('click-targets')
+
 function updateUI() {
     const board = document.getElementById("board-holder");
     if (game === undefined) {
@@ -11,6 +13,16 @@ function updateUI() {
     }
     const gameName = document.getElementById("game-name");
     gameName.innerHTML = game.getName()
+    const currentPlayer = game.currentPlayer;
+
+    if(currentPlayer === 1) {
+        clickTargets.classList.add('black');
+        clickTargets.classList.remove('red')
+    } else {
+        clickTargets.classList.add("red");
+        clickTargets.classList.remove("black");
+    }
+
 }
 
 
@@ -41,6 +53,20 @@ window.addEventListener("DOMContentLoaded", event => {
         newGameButton.disabled = true;
         updateUI();
     })
+
+    clickTargets.addEventListener('click', () => {
+        const columnToPlay = event.target.id;
+        let numColumn = null;
+        if(columnToPlay.startsWith('columns-')) {
+            let numsArray = columnToPlay.split('-')
+            numColumn = Number.parseInt(numsArray[1])
+        }
+    
+        game.playInColumn(numColumn);
+        updateUI();
+
+    })
+
 
 
 
