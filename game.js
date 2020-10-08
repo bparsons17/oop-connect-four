@@ -24,8 +24,9 @@ export class Game {
         this.columns[index].add(this.currentPlayer)
         if(this.currentPlayer === 1) {
             this.currentPlayer = 2;
-        }
+        } else {
         this.currentPlayer = 1;
+        }
     }
 
     getTokenAt(rowIndex, columnIndex) {

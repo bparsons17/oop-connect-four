@@ -7,6 +7,7 @@ export class Column {
         for( let i = 5; i >= 0; i--){
             if(this.token[i] === null){
                 this.token[i] = playerNumber;
+                break;
             }
         }
     }

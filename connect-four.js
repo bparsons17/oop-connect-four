@@ -19,11 +19,13 @@ function updateUI() {
             let tokenPosition = game.getTokenAt(i, j);
             if(tokenPosition === 1){
                 let tokenDiv = document.createElement("div");
-                tokenDiv.classList.add("token", "black");
+                tokenDiv.classList.add("black");
+                tokenDiv.classList.add('token')
                 square.appendChild(tokenDiv);
             }else if(tokenPosition === 2){
                 let tokenDiv = document.createElement("div");
-                tokenDiv.classList.add("token", "red");
+                tokenDiv.classList.add("red");
+                tokenDiv.classList.add('token')
                 square.appendChild(tokenDiv);
             }
         }
@@ -31,7 +33,6 @@ function updateUI() {
 
 
     for (let i = 0; i <= 6; i++) {
-        console.log(i)
       let column = document.getElementById(`column-${i}`);
       const fullColumn = game.isColumnFull(i);
       if( fullColumn === true){
@@ -84,13 +85,13 @@ window.addEventListener("DOMContentLoaded", event => {
         updateUI();
     })
 
-    clickTargets.addEventListener('click', () => {
+    clickTargets.addEventListener('click', (event) => {
         const columnToPlay = event.target.id;
         let numColumn = null;
-        if(columnToPlay.startsWith('columns-')) {
-            let numsArray = columnToPlay.split('-')
-            numColumn = Number.parseInt(numsArray[1])
-        }
+        if (!columnToPlay.startsWith("column-")) return;
+        //   let numsArray = columnToPlay.split("-");
+          numColumn = Number.parseInt(columnToPlay[columnToPlay.length-1]);
+          console.log(numColumn)
 
         game.playInColumn(numColumn);
         updateUI();
