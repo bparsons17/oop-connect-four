@@ -1,4 +1,4 @@
-import { Column } from "./column";
+import { Column } from "./column.js";
 
 export class Game {
     constructor(player1, player2) {
@@ -35,7 +35,6 @@ export class Game {
     isColumnFull(columnIndex) {
         let column = this.columns[columnIndex];
         return column.isFull();
-
     }
 
 

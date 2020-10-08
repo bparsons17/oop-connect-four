@@ -13,7 +13,7 @@ function updateUI() {
     }
 
     for (let i = 0; i <= 5; i++){
-        for (let j = 0; j <= 6; i++){
+        for (let j = 0; j <= 6; j++){
             let square = document.getElementById(`square-${i}-${j}`);
             square.innerHTML = "";
             let tokenPosition = game.getTokenAt(i, j);
@@ -30,9 +30,15 @@ function updateUI() {
     }
 
 
-    for (i = 0; i <= 6; i++) {
+    for (let i = 0; i <= 6; i++) {
+        console.log(i)
       let column = document.getElementById(`column-${i}`);
-      //
+      const fullColumn = game.isColumnFull(i);
+      if( fullColumn === true){
+          column.classList.add("full");
+      }else{
+          column.classList.remove("full");
+      }
     }
 
     const gameName = document.getElementById("game-name");
@@ -90,8 +96,6 @@ window.addEventListener("DOMContentLoaded", event => {
         updateUI();
 
     })
-
-    function isColumnFull()
 
 
 
