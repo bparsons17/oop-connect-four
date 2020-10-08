@@ -29,6 +29,12 @@ function updateUI() {
         }
     }
 
+
+    for (i = 0; i <= 6; i++) {
+      let column = document.getElementById(`column-${i}`);
+      //
+    }
+
     const gameName = document.getElementById("game-name");
     gameName.innerHTML = game.getName()
     const currentPlayer = game.currentPlayer;
@@ -84,6 +90,8 @@ window.addEventListener("DOMContentLoaded", event => {
         updateUI();
 
     })
+
+    function isColumnFull()
 
 
 

@@ -32,5 +32,11 @@ export class Game {
         return this.columns[columnIndex].getTokenAt(rowIndex)
     }
 
+    isColumnFull(columnIndex) {
+        let column = this.columns[columnIndex];
+        return column.isFull();
+
+    }
+
 
 }
