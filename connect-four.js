@@ -11,6 +11,24 @@ function updateUI() {
     } else {
         board.classList.remove("is-invisible");
     }
+
+    for (let i = 0; i <= 5; i++){
+        for (let j = 0; j <= 6; i++){
+            let square = document.getElementById(`square-${i}-${j}`);
+            square.innerHTML = "";
+            let tokenPosition = game.getTokenAt(i, j);
+            if(tokenPosition === 1){
+                let tokenDiv = document.createElement("div");
+                tokenDiv.classList.add("token", "black");
+                square.appendChild(tokenDiv);
+            }else if(tokenPosition === 2){
+                let tokenDiv = document.createElement("div");
+                tokenDiv.classList.add("token", "red");
+                square.appendChild(tokenDiv);
+            }
+        }
+    }
+
     const gameName = document.getElementById("game-name");
     gameName.innerHTML = game.getName()
     const currentPlayer = game.currentPlayer;
@@ -61,7 +79,7 @@ window.addEventListener("DOMContentLoaded", event => {
             let numsArray = columnToPlay.split('-')
             numColumn = Number.parseInt(numsArray[1])
         }
-    
+
         game.playInColumn(numColumn);
         updateUI();
 
