@@ -91,7 +91,7 @@ window.addEventListener("DOMContentLoaded", event => {
         if (!columnToPlay.startsWith("column-")) return;
         //   let numsArray = columnToPlay.split("-");
           numColumn = Number.parseInt(columnToPlay[columnToPlay.length-1]);
-          console.log(numColumn)
+        //   console.log(numColumn)
 
         game.playInColumn(numColumn);
         updateUI();

@@ -13,6 +13,7 @@ export class Column {
     }
 
     getTokenAt(rowIndex) {
+        // console.log(this.token[rowIndex])
         return this.token[rowIndex];
     }
     isFull() {
