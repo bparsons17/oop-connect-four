@@ -12,17 +12,17 @@ function updateUI() {
         board.classList.remove("is-invisible");
     }
 
-    for (let i = 0; i <= 5; i++){
-        for (let j = 0; j <= 6; j++){
+    for (let i = 0; i <= 5; i++) {
+        for (let j = 0; j <= 6; j++) {
             let square = document.getElementById(`square-${i}-${j}`);
             square.innerHTML = "";
             let tokenPosition = game.getTokenAt(i, j);
-            if(tokenPosition === 1){
+            if (tokenPosition === 1) {
                 let tokenDiv = document.createElement("div");
                 tokenDiv.classList.add("black");
                 tokenDiv.classList.add('token')
                 square.appendChild(tokenDiv);
-            }else if(tokenPosition === 2){
+            } else if (tokenPosition === 2) {
                 let tokenDiv = document.createElement("div");
                 tokenDiv.classList.add("red");
                 tokenDiv.classList.add('token')
@@ -33,20 +33,20 @@ function updateUI() {
 
 
     for (let i = 0; i <= 6; i++) {
-      let column = document.getElementById(`column-${i}`);
-      const fullColumn = game.isColumnFull(i);
-      if( fullColumn === true){
-          column.classList.add("full");
-      }else{
-          column.classList.remove("full");
-      }
+        let column = document.getElementById(`column-${i}`);
+        const fullColumn = game.isColumnFull(i);
+        if (fullColumn === true) {
+            column.classList.add("full");
+        } else {
+            column.classList.remove("full");
+        }
     }
 
     const gameName = document.getElementById("game-name");
     gameName.innerHTML = game.getName()
     const currentPlayer = game.currentPlayer;
 
-    if(currentPlayer === 1) {
+    if (currentPlayer === 1) {
         clickTargets.classList.add('black');
         clickTargets.classList.remove('red')
     } else {
@@ -89,17 +89,12 @@ window.addEventListener("DOMContentLoaded", event => {
         const columnToPlay = event.target.id;
         let numColumn = null;
         if (!columnToPlay.startsWith("column-")) return;
-        //   let numsArray = columnToPlay.split("-");
-          numColumn = Number.parseInt(columnToPlay[columnToPlay.length-1]);
-        //   console.log(numColumn)
+        numColumn = Number.parseInt(columnToPlay[columnToPlay.length - 1]);
 
         game.playInColumn(numColumn);
         updateUI();
 
     })
-
-
-
 
 
 
