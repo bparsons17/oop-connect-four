@@ -25,7 +25,15 @@ export class Game {
     }
 
     getName() {
-        if(this.winnerNumber === 3) {
+        if(this.winnerNumber === 1) {
+            return `${this.player1} wins!`
+        }
+         else if (this.winnerNumber === 2) {
+            return `${this.player2} wins!`
+        }
+
+
+        else if (this.winnerNumber === 3) {
             return `${this.player1} ties ${this.player2}`
         } else {
            return `${ this.player1 } versus ${ this.player2 }`
@@ -59,6 +67,7 @@ export class Game {
             for (let i = 0; i < this.columns.length; i++){
                 let newColumn = new ColumnWinInspector(this.columns[i]);
                 let winner = newColumn.inspect();
+                console.log(winner)
                 if(winner === 1 || winner === 2){
                     this.winnerNumber = winner;
                     break;
