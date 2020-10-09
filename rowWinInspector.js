@@ -2,16 +2,11 @@ import { Column } from "./column.js";
 
 export class RowWinInspector {
     constructor (columns){
-        this.columns = [
-            new Column(),
-            new Column(),
-            new Column(),
-            new Column()
-        ]
+        this.columns = columns;
     }
 
     inspect(){
-        for(let i = 0; i <= 5; i++){
+        for(let i = 0; i <= 6; i++){
             const token1 = this.columns[0].getTokenAt(i);
             const token2 = this.columns[1].getTokenAt(i);
             const token3 = this.columns[2].getTokenAt(i);

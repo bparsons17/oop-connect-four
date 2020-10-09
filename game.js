@@ -1,7 +1,7 @@
 import { Column } from "./column.js";
 import { ColumnWinInspector } from "./columnWinInspector.js";
 import { RowWinInspector } from "./rowWinInspector.js";
-
+import { DiagonalWinInspector } from "./diagonalWinInspector.js"
 export class Game {
     constructor(player1, player2) {
         this.player1 = player1;
@@ -49,6 +49,7 @@ export class Game {
         this.checkForTie();
         this.checkForColumnWin();
         this.checkForRowWin();
+        this.checkForDiagonalWin()
     }
 
     getTokenAt(rowIndex, columnIndex) {
@@ -91,6 +92,21 @@ export class Game {
             }
 
         }
+    }
+
+    checkForDiagonalWin() {
+         if (this.winnerNumber !== 0) {
+           return;
+         } else {
+           for (let i = 0; i < 4; i++) {
+             const slicedColumns = this.columns.slice(i, i + 4);
+             const rows = new DiagonalWinInspector(slicedColumns);
+             const winner = rows.inspect();
+             if (winner === 1 || winner === 2) {
+               this.winnerNumber = winner;
+             }
+           }
+         }
     }
 
 }
