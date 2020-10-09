@@ -1,6 +1,13 @@
 import { Game } from './game.js';
-
+import { GameJSONSerializer } from './gameJSONSerializer.js'
+import { JSONDeserializer } from './gameJSONDeserializer.js'
 let game = undefined;
+const json = window.localStorage.getItem('connect-four');
+if(json) {
+    const deserializer = new JSONDeserializer(json);
+    game = deserializer.deserialize();
+    updateUI();
+}
 
 const clickTargets = document.getElementById('click-targets')
 
@@ -92,6 +99,10 @@ window.addEventListener("DOMContentLoaded", event => {
         numColumn = Number.parseInt(columnToPlay[columnToPlay.length - 1]);
 
         game.playInColumn(numColumn);
+
+        const serializer = new GameJSONSerializer(game);
+        const json = serializer.serialize();
+        window.localStorage.setItem('connect-four', json)
         updateUI();
 
     })

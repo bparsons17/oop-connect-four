@@ -7,7 +7,7 @@ export class GameJSONSerializer{
         const data = {
             player1Name: this.game.player1Name,
             player2Name: this.game.player2Name,
-            tokens: [[],[],[],[],[],[]];
+            tokens: [[],[],[],[],[],[]]
 
         }
         for (let i = 0; i < 6; i++){
