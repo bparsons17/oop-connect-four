@@ -14,10 +14,21 @@ export class Game {
           new Column(),
           new Column()
         ];
+        this.winnerNumber = 0;
+    }
+
+    checkForTie() {
+        if (this.columns.every(x=> x.isFull())) {
+            this.winnerNumber = 3;
+        }
     }
 
     getName() {
-        return `${this.player1} versus ${this.player2}`;
+        if(this.winnerNumber === 3) {
+            return `${this.player1} ties ${this.player2}`
+        } else {
+           return `${ this.player1 } versus ${ this.player2 }`
+        }
     }
 
     playInColumn(index) {
@@ -27,6 +38,7 @@ export class Game {
         } else {
         this.currentPlayer = 1;
         }
+        this.checkForTie();
     }
 
     getTokenAt(rowIndex, columnIndex) {
